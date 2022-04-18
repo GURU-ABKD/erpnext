@@ -1207,6 +1207,10 @@ def get_outstanding_reference_documents(args):
 	if args.get("party_type") == "Member":
 		return
 
+	if args.get("party_type") == "Customer":
+		# Set customer group to empty if not Student
+		customer_group =  "" if frappe.db.get_value("Customer", args.get('party'), "customer_group") != "Student" else "Student"
+
 	# confirm that Supplier is not blocked
 	if args.get("party_type") == "Supplier":
 		supplier_status = get_supplier_block_status(args["party"])
@@ -1238,15 +1242,24 @@ def get_outstanding_reference_documents(args):
 		"due_date": ["from_due_date", "to_due_date"],
 	}
 
-	for fieldname, date_fields in date_fields_dict.items():
-		if args.get(date_fields[0]) and args.get(date_fields[1]):
-			condition += " and {0} between '{1}' and '{2}'".format(
-				fieldname, args.get(date_fields[0]), args.get(date_fields[1])
-			)
+	# condition for Payment Schedule due date if customer group student
+	# Added condition and field name
+	if customer_group == "Student":
+		for fieldname, date_fields in date_fields_dict.items():
+			if args.get(date_fields[0]) and args.get(date_fields[1]):
+				condition += " and ps.{0} between '{1}' and '{2}'".format(
+					fieldname, args.get(date_fields[0]), args.get(date_fields[1])
+				)
+	else:
+		for fieldname, date_fields in date_fields_dict.items():
+			if args.get(date_fields[0]) and args.get(date_fields[1]):
+				condition += " and {0} between '{1}' and '{2}'".format(
+					fieldname, args.get(date_fields[0]), args.get(date_fields[1])
+				)
 
 	if args.get("company"):
 		condition += " and company = {0}".format(frappe.db.escape(args.get("company")))
-
+		
 	outstanding_invoices = get_outstanding_invoices(
 		args.get("party_type"),
 		args.get("party"),
@@ -1255,7 +1268,7 @@ def get_outstanding_reference_documents(args):
 		condition=condition,
 	)
 
-	outstanding_invoices = split_invoices_based_on_payment_terms(outstanding_invoices)
+	outstanding_invoices = split_invoices_based_on_payment_terms(outstanding_invoices, [args.get(date_fields[0]), args.get(date_fields[1])], customer_group)
 
 	for d in outstanding_invoices:
 		d["exchange_rate"] = 1
@@ -1270,21 +1283,23 @@ def get_outstanding_reference_documents(args):
 			d["bill_no"] = frappe.db.get_value(d.voucher_type, d.voucher_no, "bill_no")
 
 	# Get all SO / PO which are not fully billed or against which full advance not paid
+	# Skip customers with student customer_group
 	orders_to_be_billed = []
-	if args.get("party_type") != "Student":
-		orders_to_be_billed = get_orders_to_be_billed(
-			args.get("posting_date"),
-			args.get("party_type"),
-			args.get("party"),
-			args.get("company"),
-			party_account_currency,
-			company_currency,
-			filters=args,
-		)
+	if args.get("party_type") != "Student" and customer_group != "Student":
+			orders_to_be_billed = get_orders_to_be_billed(
+				args.get("posting_date"),
+				args.get("party_type"),
+				args.get("party"),
+				args.get("company"),
+				party_account_currency,
+				company_currency,
+				filters=args,
+			)
 
 	# Get negative outstanding sales /purchase invoices
+	# Skip customers with student customer_group
 	negative_outstanding_invoices = []
-	if args.get("party_type") not in ["Student", "Employee"] and not args.get("voucher_no"):
+	if args.get("party_type") not in ["Student", "Employee"] and not args.get("voucher_no") and customer_group != "Student":
 		negative_outstanding_invoices = get_negative_outstanding_invoices(
 			args.get("party_type"),
 			args.get("party"),
@@ -1306,7 +1321,7 @@ def get_outstanding_reference_documents(args):
 	return data
 
 
-def split_invoices_based_on_payment_terms(outstanding_invoices):
+def split_invoices_based_on_payment_terms(outstanding_invoices, due_date, customer_group):
 	invoice_ref_based_on_payment_terms = {}
 	for idx, d in enumerate(outstanding_invoices):
 		if d.voucher_type in ["Sales Invoice", "Purchase Invoice"]:
@@ -1318,9 +1333,16 @@ def split_invoices_based_on_payment_terms(outstanding_invoices):
 					"Payment Terms Template", payment_term_template, "allocate_payment_based_on_payment_terms"
 				)
 				if allocate_payment_based_on_payment_terms:
-					payment_schedule = frappe.get_all(
-						"Payment Schedule", filters={"parent": d.voucher_no}, fields=["*"]
-					)
+					if customer_group == "Student":
+						# added due date in filter
+							# fetch payment schedule same with filter due date
+						payment_schedule = frappe.get_all(
+							"Payment Schedule", filters=[["parent", "=", d.voucher_no], ["due_date", "Between", due_date]], fields=["*"]
+						)
+					else:
+						payment_schedule = frappe.get_all(
+							"Payment Schedule", filters={"parent": d.voucher_no}, fields=["*"]
+						)
 
 					for payment_term in payment_schedule:
 						if payment_term.outstanding > 0.1:
@@ -1328,13 +1350,13 @@ def split_invoices_based_on_payment_terms(outstanding_invoices):
 							invoice_ref_based_on_payment_terms[idx].append(
 								frappe._dict(
 									{
-										"due_date": d.due_date,
+										"due_date": payment_term.due_date,
 										"currency": d.currency,
 										"voucher_no": d.voucher_no,
 										"voucher_type": d.voucher_type,
 										"posting_date": d.posting_date,
 										"invoice_amount": flt(d.invoice_amount),
-										"outstanding_amount": flt(d.outstanding_amount),
+										"outstanding_amount": flt(payment_term.outstanding),
 										"payment_amount": payment_term.payment_amount,
 										"payment_term": payment_term.payment_term,
 									}

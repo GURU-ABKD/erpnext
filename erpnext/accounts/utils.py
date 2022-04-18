@@ -809,6 +809,13 @@ def get_outstanding_invoices(party_type, party, account, condition=None, filters
 	outstanding_invoices = []
 	precision = frappe.get_precision("Sales Invoice", "outstanding_amount") or 2
 
+	if party_type == "Customer":
+		# Set customer group to empty if not Student
+		customer_group =  "" if frappe.db.get_value("Customer", party, "customer_group") != "Student" else "Student"
+	# For customer with Student customer group
+	# Join Sales Invoice and Payment Schedule to filter due date
+	join_condition = "LEFT JOIN `tabPayment Schedule` ps ON ps.parent = voucher_no" if customer_group == "Student" else ""
+
 	if account:
 		root_type, account_type = frappe.get_cached_value(
 			"Account", account, ["root_type", "account_type"]
@@ -827,33 +834,35 @@ def get_outstanding_invoices(party_type, party, account, condition=None, filters
 
 	held_invoices = get_held_invoices(party_type, party)
 
-	invoice_list = frappe.db.sql(
-		"""
-		select
-			voucher_no, voucher_type, posting_date, due_date,
-			ifnull(sum({dr_or_cr}), 0) as invoice_amount,
-			account_currency as currency
-		from
-			`tabGL Entry`
-		where
-			party_type = %(party_type)s and party = %(party)s
-			and account = %(account)s and {dr_or_cr} > 0
-			and is_cancelled=0
-			{condition}
-			and ((voucher_type = 'Journal Entry'
-					and (against_voucher = '' or against_voucher is null))
-				or (voucher_type not in ('Journal Entry', 'Payment Entry')))
-		group by voucher_type, voucher_no
-		order by posting_date, name""".format(
-			dr_or_cr=dr_or_cr, condition=condition or ""
-		),
-		{
-			"party_type": party_type,
-			"party": party,
-			"account": account,
-		},
-		as_dict=True,
-	)
+	if customer_group == "Student":
+		invoice_list = frappe.db.sql(
+			"""
+			SELECT
+				voucher_no, voucher_type, posting_date, gl.due_date,
+				ifnull(sum({dr_or_cr}), 0) AS invoice_amount,
+				account_currency AS currency
+			FROM
+				`tabGL Entry` gl
+			{join_condition}
+			WHERE
+				party_type = %(party_type)s AND party = %(party)s
+				AND account = %(account)s AND {dr_or_cr} > 0
+				AND is_cancelled=0
+				{condition}
+				AND ((voucher_type = 'Journal Entry'
+						AND (against_voucher = '' OR against_voucher is null))
+					OR (voucher_type NOT IN ('Journal Entry', 'Payment Entry')))
+			GROUP BY voucher_type, voucher_no
+			ORDER BY posting_date, gl.name""".format(
+				dr_or_cr=dr_or_cr, join_condition=join_condition or "", condition=condition or ""
+			),
+			{
+				"party_type": party_type,
+				"party": party,
+				"account": account,
+			},
+			as_dict=True,
+		)
 
 	payment_entries = frappe.db.sql(
 		"""
