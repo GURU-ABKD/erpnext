@@ -629,17 +629,34 @@ frappe.ui.form.on('Payment Entry', {
 	},
 
 	get_outstanding_invoice: function(frm) {
+		var customer_group = "";
 		const today = frappe.datetime.get_today();
+		if (frm.doc.party_type == "Customer") {
+			frappe.call({
+				method: "frappe.client.get_value",
+				args: {
+					"doctype": "Customer",
+					"filters": {"name": frm.doc.party},
+					"fieldname": "customer_group"
+				},
+				async: false,
+				callback: function(res){
+					// Set Customer Group
+					customer_group = res.message.customer_group
+				}
+			})
+		}
+
+		// Set due date today if student customer group
 		const fields = [
 			{fieldtype:"Section Break", label: __("Posting Date")},
-			{fieldtype:"Date", label: __("From Date"),
-				fieldname:"from_posting_date", default:frappe.datetime.add_days(today, -30)},
+			{fieldtype:"Date", label: __("From Date"), fieldname:"from_posting_date", default: customer_group != "Student" ? frappe.datetime.add_days(today, -30) : ""},
 			{fieldtype:"Column Break"},
-			{fieldtype:"Date", label: __("To Date"), fieldname:"to_posting_date", default:today},
+			{fieldtype:"Date", label: __("To Date"), fieldname:"to_posting_date", default: customer_group != "Student" ? today : ""},
 			{fieldtype:"Section Break", label: __("Due Date")},
-			{fieldtype:"Date", label: __("From Date"), fieldname:"from_due_date"},
+			{fieldtype:"Date", label: __("From Date"), fieldname:"from_due_date", default: customer_group == "Student" ? today : ""},
 			{fieldtype:"Column Break"},
-			{fieldtype:"Date", label: __("To Date"), fieldname:"to_due_date"},
+			{fieldtype:"Date", label: __("To Date"), fieldname:"to_due_date", default:customer_group == "Student" ? today : ""},
 			{fieldtype:"Section Break", label: __("Outstanding Amount")},
 			{fieldtype:"Float", label: __("Greater Than Amount"),
 				fieldname:"outstanding_amt_greater_than", default: 0},
@@ -780,6 +797,15 @@ frappe.ui.form.on('Payment Entry', {
 				frm.events.allocate_party_amount_against_ref_docs(frm,
 					(frm.doc.payment_type=="Receive" ? frm.doc.paid_amount : frm.doc.received_amount));
 
+				// Set Required Payment after fetching all documents
+				// Add all Outstanding amount from references table
+				var total_outstanding_amount = 0;
+				$.each(frm.doc.references || [], function(index, ref) {
+					total_outstanding_amount += ref.outstanding_amount;
+				});
+
+				frm.set_value("required_payment", total_outstanding_amount);
+				frm.refresh_field("required_payment");
 			}
 		});
 	},
