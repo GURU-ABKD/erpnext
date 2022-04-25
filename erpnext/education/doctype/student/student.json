@@ -101,8 +101,7 @@
    "fieldname": "student_email_id",
    "fieldtype": "Data",
    "in_global_search": 1,
-   "label": "Student Email Address",
-   "unique": 1
+   "label": "Student Email Address"
   },
   {
    "fieldname": "student_mobile_number",
@@ -254,7 +253,7 @@
  ],
  "image_field": "image",
  "links": [],
- "modified": "2022-03-17 08:11:46.247504",
+ "modified": "2022-04-15 20:29:59.020036",
  "modified_by": "Administrator",
  "module": "Education",
  "name": "Student",
