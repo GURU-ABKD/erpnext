@@ -86,17 +86,15 @@ class Student(Document):
 	def create_student_user(self):
 		"""Create a website user for student creation if not already exists"""
 		if not frappe.db.exists("User", self.student_email_id):
-			student_user = frappe.get_doc(
-				{
-					"doctype": "User",
-					"first_name": self.first_name,
-					"last_name": self.last_name,
-					"email": self.student_email_id,
-					"gender": self.gender,
-					"send_welcome_email": 1,
-					"user_type": "Website User",
-				}
-			)
+			student_user = frappe.get_doc({
+				'doctype':'User',
+				'first_name': self.first_name,
+				'last_name': self.last_name,
+				'email': self.student_email_id,
+				'gender': self.gender,
+				'send_welcome_email': 0,
+				'user_type': 'Website User'
+				})
 			student_user.flags.ignore_permissions = True
 			student_user.add_roles("Student")
 			student_user.save()

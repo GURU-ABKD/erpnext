@@ -90,7 +90,7 @@
  ],
  "image_field": "image",
  "links": [],
- "modified": "2020-07-23 18:33:57.904398",
+ "modified": "2022-03-17 15:10:31.123643",
  "modified_by": "Administrator",
  "module": "Education",
  "name": "Instructor",
@@ -113,6 +113,18 @@
    "report": 1,
    "role": "Education Manager",
    "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Registrar",
    "share": 1,
    "write": 1
   }

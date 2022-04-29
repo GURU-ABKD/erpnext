@@ -21,9 +21,9 @@ frappe.ui.form.on("Student Applicant", {
 		}
 
 		if (frm.doc.application_status === "Approved" && frm.doc.docstatus === 1) {
-			frm.add_custom_button(__("Enroll"), function() {
-				frm.events.enroll(frm)
-			}).addClass("btn-primary");
+			// frm.add_custom_button(__("Enroll"), function() {
+			// 	frm.events.enroll(frm)
+			// }).addClass("btn-primary");
 
 			frm.add_custom_button(__("Reject"), function() {
 				frm.set_value("application_status", "Rejected");
@@ -45,12 +45,12 @@ frappe.ui.form.on("Student Applicant", {
 		});
 	},
 
-	enroll: function(frm) {
-		frappe.model.open_mapped_doc({
-			method: "erpnext.education.api.enroll_student",
-			frm: frm
-		})
-	}
+	// enroll: function(frm) {
+	// 	frappe.model.open_mapped_doc({
+	// 		method: "erpnext.education.api.enroll_student",
+	// 		frm: frm
+	// 	})
+	// }
 });
 
 frappe.ui.form.on('Student Sibling', {

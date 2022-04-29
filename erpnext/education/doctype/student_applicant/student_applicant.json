@@ -169,8 +169,7 @@
    "fieldname": "student_email_id",
    "fieldtype": "Data",
    "label": "Student Email Address",
-   "options": "Email",
-   "unique": 1
+   "options": "Email"
   },
   {
    "fieldname": "student_mobile_number",
@@ -269,7 +268,7 @@
  "image_field": "image",
  "is_submittable": 1,
  "links": [],
- "modified": "2021-03-01 23:00:25.119241",
+ "modified": "2022-04-15 20:29:41.392770",
  "modified_by": "Administrator",
  "module": "Education",
  "name": "Student Applicant",
