@@ -1323,6 +1323,7 @@ def get_outstanding_reference_documents(args):
 
 def split_invoices_based_on_payment_terms(outstanding_invoices, due_date, customer_group):
 	invoice_ref_based_on_payment_terms = {}
+	total_ref = 0
 	for idx, d in enumerate(outstanding_invoices):
 		if d.voucher_type in ["Sales Invoice", "Purchase Invoice"]:
 			payment_term_template = frappe.db.get_value(
@@ -1335,7 +1336,7 @@ def split_invoices_based_on_payment_terms(outstanding_invoices, due_date, custom
 				if allocate_payment_based_on_payment_terms:
 					if customer_group == "Student":
 						# added due date in filter
-							# fetch payment schedule same with filter due date
+						# fetch payment schedule same with filter due date
 						payment_schedule = frappe.get_all(
 							"Payment Schedule", filters=[["parent", "=", d.voucher_no], ["due_date", "Between", due_date]], fields=["*"]
 						)
@@ -1343,6 +1344,8 @@ def split_invoices_based_on_payment_terms(outstanding_invoices, due_date, custom
 						payment_schedule = frappe.get_all(
 							"Payment Schedule", filters={"parent": d.voucher_no}, fields=["*"]
 						)
+					for term in payment_schedule:
+						total_ref+=1
 
 					for payment_term in payment_schedule:
 						if payment_term.outstanding > 0.1:
@@ -1355,7 +1358,7 @@ def split_invoices_based_on_payment_terms(outstanding_invoices, due_date, custom
 										"voucher_no": d.voucher_no,
 										"voucher_type": d.voucher_type,
 										"posting_date": d.posting_date,
-										"invoice_amount": flt(d.invoice_amount),
+										"invoice_amount": flt(d.invoice_amount/total_ref) if customer_group == "Student" else flt(d.invoice_amount),
 										"outstanding_amount": flt(payment_term.outstanding),
 										"payment_amount": payment_term.payment_amount,
 										"payment_term": payment_term.payment_term,
