@@ -60,6 +60,8 @@ class PaymentEntry(AccountsController):
 			self.party_account_currency = self.paid_to_account_currency
 
 	def validate(self):
+		customer_group =  "" if frappe.db.get_value("Customer", self.party, "customer_group") != "Student" else "Student" # Set customer group to empty if not Student
+
 		self.setup_party_account_field()
 		self.set_missing_values()
 		self.validate_payment_type()
@@ -78,7 +80,9 @@ class PaymentEntry(AccountsController):
 		self.validate_transaction_reference()
 		self.set_title()
 		self.set_remarks()
-		self.validate_duplicate_entry()
+		# Allow duplicate references due to SI Payment Terms for Student customer group
+		if customer_group != "Student":
+			self.validate_duplicate_entry() 
 		self.validate_payment_type_with_outstanding()
 		self.validate_allocated_amount()
 		self.validate_paid_invoices()
