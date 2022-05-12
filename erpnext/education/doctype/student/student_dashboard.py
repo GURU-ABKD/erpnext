@@ -8,7 +8,7 @@ def get_data():
 		"fieldname": "student",
 		"non_standard_fieldnames": {"Bank Account": "party"},
 		"transactions": [
-			{"label": _("Admission"), "items": ["Program Enrollment", "Course Enrollment"]},
+			{"label": _("Admission"), "items": ["Program Enrollment", "Course Enrollment", "Student Scholarship and Discount Request"]},
 			{
 				"label": _("Student Activity"),
 				"items": [
