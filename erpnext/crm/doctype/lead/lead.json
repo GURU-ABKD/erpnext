@@ -9,29 +9,29 @@
  "email_append_to": 1,
  "engine": "InnoDB",
  "field_order": [
+  "lead_owner",
   "organization_lead",
   "lead_details",
   "naming_series",
-  "lead_name",
   "company_name",
-  "email_id",
+  "website",
   "col_break123",
-  "lead_owner",
   "status",
+  "nature_of_business",
+  "section_break_8",
   "salutation",
+  "lead_name",
   "designation",
   "gender",
+  "column_break_12",
+  "email_id",
+  "mobile_no",
+  "phone",
+  "fax",
   "source",
   "customer",
   "campaign_name",
   "image",
-  "section_break_12",
-  "contact_by",
-  "column_break_14",
-  "contact_date",
-  "ends_on",
-  "notes_section",
-  "notes",
   "address_info",
   "address_html",
   "address_type",
@@ -45,11 +45,16 @@
   "state",
   "country",
   "pincode",
+  "section_break_12",
+  "contact_by",
+  "column_break_14",
+  "contact_date",
+  "ends_on",
   "contact_section",
-  "phone",
-  "mobile_no",
-  "fax",
-  "website",
+  "product_to_offer_section",
+  "insurance_to_offer",
+  "notes_section",
+  "notes",
   "more_info",
   "type",
   "market_segment",
@@ -74,6 +79,7 @@
   {
    "fieldname": "lead_details",
    "fieldtype": "Section Break",
+   "label": "Company Info",
    "options": "fa fa-user"
   },
   {
@@ -129,7 +135,7 @@
    "search_index": 1
   },
   {
-   "default": "Lead",
+   "default": "Data Gathering",
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -138,7 +144,7 @@
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "Lead\nOpen\nReplied\nOpportunity\nQuotation\nLost Quotation\nInterested\nConverted\nDo Not Contact",
+   "options": "Data Gathering\nProgram Design\nCanvassing\nClient Presentation\nClient Confirmation\nOpportunity\nLost Opportunity\nConverted to Account",
    "reqd": 1,
    "search_index": 1
   },
@@ -338,6 +344,7 @@
    "options": "fa fa-file-text"
   },
   {
+   "default": "Client",
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Lead Type",
@@ -454,13 +461,39 @@
    "fieldtype": "Link",
    "label": "Print Language",
    "options": "Language"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break",
+   "label": "Company Contact"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "product_to_offer_section",
+   "fieldtype": "Section Break",
+   "label": "Product to Offer"
+  },
+  {
+   "fieldname": "insurance_to_offer",
+   "fieldtype": "Table",
+   "label": "Insurance to Offer",
+   "options": "Insurance to Offer"
+  },
+  {
+   "fieldname": "nature_of_business",
+   "fieldtype": "Link",
+   "label": "Nature of Business",
+   "options": "Nature of Business"
   }
  ],
  "icon": "fa fa-user",
  "idx": 5,
  "image_field": "image",
  "links": [],
- "modified": "2021-01-06 19:39:58.748978",
+ "modified": "2022-06-22 17:20:42.691687",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Lead",
