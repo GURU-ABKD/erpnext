@@ -14,12 +14,12 @@
   "from_section",
   "naming_series",
   "opportunity_from",
+  "opportunity_type",
   "party_name",
   "customer_name",
   "source",
   "column_break0",
   "title",
-  "opportunity_type",
   "status",
   "converted_by",
   "sales_stage",
@@ -77,16 +77,17 @@
    "set_only_once": 1
   },
   {
+   "fetch_from": "opportunity_type.opportunity_from",
    "fieldname": "opportunity_from",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Opportunity From",
    "oldfieldname": "enquiry_from",
    "oldfieldtype": "Select",
    "options": "DocType",
-   "print_hide": 1,
-   "reqd": 1
+   "print_hide": 1
   },
   {
    "bold": 1,
@@ -106,7 +107,7 @@
    "fieldtype": "Data",
    "in_global_search": 1,
    "label": "Customer / Lead Name",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "column_break0",
@@ -126,10 +127,11 @@
    "fieldname": "opportunity_type",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Opportunity Type",
+   "label": "Opportunity From",
    "oldfieldname": "enquiry_type",
    "oldfieldtype": "Select",
-   "options": "Opportunity Type"
+   "options": "Opportunity Type",
+   "reqd": 1
   },
   {
    "default": "Open",
@@ -430,7 +432,7 @@
  "icon": "fa fa-info-sign",
  "idx": 195,
  "links": [],
- "modified": "2021-06-04 10:11:22.831139",
+ "modified": "2022-07-07 19:49:19.974979",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Opportunity",
