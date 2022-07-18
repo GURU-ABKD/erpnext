@@ -18,7 +18,7 @@
   }
  ],
  "links": [],
- "modified": "2020-05-20 12:22:01.866472",
+ "modified": "2022-07-14 09:11:03.039947",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Sales Stage",
@@ -33,6 +33,16 @@
    "read": 1,
    "report": 1,
    "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
    "share": 1,
    "write": 1
   }

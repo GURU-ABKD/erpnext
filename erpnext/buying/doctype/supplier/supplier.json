@@ -438,7 +438,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2021-09-06 17:37:56.522233",
+ "modified": "2022-07-14 12:36:23.608752",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Supplier",
@@ -495,6 +495,15 @@
    "read": 1,
    "report": 1,
    "role": "Accounts Manager"
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1
   }
  ],
  "quick_entry": 1,
