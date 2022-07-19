@@ -115,11 +115,14 @@ frappe.ui.form.on("Opportunity", {
 					frm.save();
 				});
 			} else {
-				frm.add_custom_button(__("Reopen"), function() {
-					frm.set_value("lost_reasons",[])
-					frm.set_value("status", "Open");
-					frm.save();
-				});
+				if(new Date(cur_frm.doc.follow_up_date) <= new Date(frappe.datetime.now_date())){
+
+					frm.add_custom_button(__("Reopen"), function() {
+						frm.set_value("lost_reasons",[])
+						frm.set_value("status", "Open");
+						frm.save();
+					});
+				}
 			}
 		}
 	},

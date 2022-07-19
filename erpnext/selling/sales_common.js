@@ -480,6 +480,12 @@ frappe.ui.form.on(cur_frm.doctype, {
 					"reqd": 1
 				},
 				{
+					"fieldtype": "Date",
+					"label": __("Next Date to follow-up"),
+					"fieldname": "follow_up_date",
+					"reqd":1
+				},
+				{
 					"fieldtype": "Text",
 					"label": __("Detailed Reason"),
 					"fieldname": "detailed_reason"
@@ -489,13 +495,15 @@ frappe.ui.form.on(cur_frm.doctype, {
 				var values = dialog.get_values();
 				var reasons = values["lost_reason"];
 				var detailed_reason = values["detailed_reason"];
+				var follow_up_date = values['follow_up_date'];
 
 				frm.call({
 					doc: frm.doc,
 					method: 'declare_enquiry_lost',
 					args: {
 						'lost_reasons_list': reasons,
-						'detailed_reason': detailed_reason
+						'detailed_reason': detailed_reason,
+						'follow_up_date': follow_up_date 
 					},
 					callback: function(r) {
 						dialog.hide();
