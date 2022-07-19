@@ -107,12 +107,15 @@ class Opportunity(TransactionBase):
 			self.party_name = lead_name
 
 	@frappe.whitelist()
-	def declare_enquiry_lost(self, lost_reasons_list, detailed_reason=None):
+	def declare_enquiry_lost(self, lost_reasons_list, follow_up_date, detailed_reason=None):
 		if not self.has_active_quotation():
 			frappe.db.set(self, "status", "Lost")
 
 			if detailed_reason:
 				frappe.db.set(self, "order_lost_reason", detailed_reason)
+			
+			if follow_up_date:
+				frappe.db.set(self, 'follow_up_date', follow_up_date)
 
 			for reason in lost_reasons_list:
 				self.append("lost_reasons", reason)
