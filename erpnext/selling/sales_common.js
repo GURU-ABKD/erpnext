@@ -481,8 +481,8 @@ frappe.ui.form.on(cur_frm.doctype, {
 				},
 				{
 					"fieldtype": "Date",
-					"label": __("Next Date to follow-up"),
-					"fieldname": "follow_up_date",
+					"label": __("Next Date to Reopen"),
+					"fieldname": "date_to_reopen",
 					"reqd":1
 				},
 				{
@@ -495,7 +495,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 				var values = dialog.get_values();
 				var reasons = values["lost_reason"];
 				var detailed_reason = values["detailed_reason"];
-				var follow_up_date = values['follow_up_date'];
+				var date_to_reopen = values['date_to_reopen'];
 
 				frm.call({
 					doc: frm.doc,
@@ -503,7 +503,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 					args: {
 						'lost_reasons_list': reasons,
 						'detailed_reason': detailed_reason,
-						'follow_up_date': follow_up_date 
+						'date_to_reopen': date_to_reopen 
 					},
 					callback: function(r) {
 						dialog.hide();
