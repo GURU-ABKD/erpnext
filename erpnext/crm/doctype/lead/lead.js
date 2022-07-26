@@ -7,8 +7,8 @@ cur_frm.email_field = "email_id";
 erpnext.LeadController = frappe.ui.form.Controller.extend({
 	setup: function () {
 		this.frm.make_methods = {
-			'Customer': this.make_customer,
-			'Quotation': this.make_quotation,
+			// 'Customer': this.make_customer,
+			// 'Quotation': this.make_quotation,
 			'Opportunity': this.make_opportunity
 		};
 
@@ -34,11 +34,12 @@ erpnext.LeadController = frappe.ui.form.Controller.extend({
 		erpnext.toggle_naming_series();
 		frappe.dynamic_link = { doc: doc, fieldname: 'name', doctype: 'Lead' }
 
-		if (!this.frm.is_new() && doc.__onload && !doc.__onload.is_customer) {
-			this.frm.add_custom_button(__("Customer"), this.make_customer, __("Create"));
+		// Trinity will not be creating Customer or Quotation in Lead Doctype
+		// if (!this.frm.is_new() && doc.__onload && !doc.__onload.is_customer) {
+		// 	this.frm.add_custom_button(__("Customer"), this.make_customer, __("Create"));
 			// this.frm.add_custom_button(__("Opportunity"), this.make_opportunity, __("Create"));
-			this.frm.add_custom_button(__("Quotation"), this.make_quotation, __("Create"));
-		}
+		// 	this.frm.add_custom_button(__("Quotation"), this.make_quotation, __("Create"));
+		// }
 
 		if (!this.frm.is_new()) {
 			frappe.contacts.render_address_and_contact(this.frm);
