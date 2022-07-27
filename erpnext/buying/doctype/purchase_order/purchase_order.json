@@ -10,10 +10,8 @@
  "field_order": [
   "supplier_section",
   "title",
-  "naming_series",
-  "supplier",
-  "get_items_from_open_material_requests",
-  "supplier_name",
+  "customer",
+  "customer_name",
   "apply_tds",
   "tax_withholding_category",
   "column_break1",
@@ -23,13 +21,15 @@
   "order_confirmation_no",
   "order_confirmation_date",
   "amended_from",
+  "naming_series",
   "accounting_dimensions_section",
-  "cost_center",
   "dimension_col_break",
+  "cost_center",
   "project",
+  "supplier",
+  "get_items_from_open_material_requests",
+  "supplier_name",
   "drop_ship",
-  "customer",
-  "customer_name",
   "column_break_19",
   "customer_contact_person",
   "customer_contact_display",
@@ -273,8 +273,7 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
-   "options": "Customer",
-   "read_only": 1
+   "options": "Customer"
   },
   {
    "bold": 1,
@@ -1170,11 +1169,10 @@
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-26 12:16:38.694276",
+ "modified": "2022-07-27 09:36:53.892281",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -1215,13 +1213,34 @@
    "read": 1,
    "role": "Purchase Manager",
    "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "JAS",
+   "share": 1,
+   "write": 1
   }
  ],
  "search_fields": "status, transaction_date, supplier, grand_total",
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "timeline_field": "supplier",
  "title_field": "supplier_name",
  "track_changes": 1
