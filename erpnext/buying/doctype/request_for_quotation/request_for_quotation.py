@@ -207,6 +207,7 @@ class RequestforQuotation(BuyingController):
 			subject=subject,
 			content=message,
 			recipients=data.email_id,
+			cc=data.cc,
 			sender=sender,
 			attachments=attachments,
 			send_email=True,
