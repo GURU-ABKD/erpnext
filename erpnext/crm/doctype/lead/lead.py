@@ -34,7 +34,7 @@ class Lead(SellingController):
 		self.set_lead_name()
 		self.set_title()
 		self.set_status()
-		self.check_email_id_is_unique()
+		#self.check_email_id_is_unique()
 		self.validate_email_id()
 		self.validate_contact_date()
 		self.set_prev()
