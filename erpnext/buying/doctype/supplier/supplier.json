@@ -438,7 +438,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-07-14 12:36:23.608752",
+ "modified": "2022-11-21 11:10:22.091828",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Supplier",
@@ -450,7 +450,8 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Purchase User"
+   "role": "Purchase User",
+   "select": 1
   },
   {
    "email": 1,
@@ -458,6 +459,7 @@
    "read": 1,
    "report": 1,
    "role": "Purchase Manager",
+   "select": 1,
    "write": 1
   },
   {
@@ -470,31 +472,36 @@
    "read": 1,
    "report": 1,
    "role": "Purchase Master Manager",
+   "select": 1,
    "set_user_permissions": 1,
    "share": 1,
    "write": 1
   },
   {
    "read": 1,
-   "role": "Stock User"
+   "role": "Stock User",
+   "select": 1
   },
   {
    "email": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Stock Manager"
+   "role": "Stock Manager",
+   "select": 1
   },
   {
    "read": 1,
-   "role": "Accounts User"
+   "role": "Accounts User",
+   "select": 1
   },
   {
    "email": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Accounts Manager"
+   "role": "Accounts Manager",
+   "select": 1
   },
   {
    "email": 1,
@@ -503,6 +510,7 @@
    "read": 1,
    "report": 1,
    "role": "All",
+   "select": 1,
    "share": 1
   }
  ],

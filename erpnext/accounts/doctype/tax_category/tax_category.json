@@ -29,11 +29,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-18 21:13:41.161017",
+ "modified": "2022-07-21 09:46:19.839103",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Tax Category",
- "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -68,11 +67,15 @@
    "report": 1,
    "role": "Accounts User",
    "share": 1
+  },
+  {
+   "read": 1,
+   "role": "All",
+   "select": 1
   }
  ],
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "track_changes": 1
 }

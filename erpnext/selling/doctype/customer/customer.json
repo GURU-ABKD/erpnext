@@ -16,32 +16,21 @@
   "customer_name",
   "gender",
   "customer_type",
+  "so_required",
+  "is_internal_customer",
   "pan",
-  "tax_withholding_category",
-  "default_bank_account",
-  "lead_name",
-  "opportunity_name",
   "image",
   "column_break0",
   "account_manager",
   "customer_group",
-  "territory",
-  "tax_id",
-  "tax_category",
-  "so_required",
   "dn_required",
   "disabled",
-  "is_internal_customer",
   "represents_company",
+  "website",
   "allowed_to_transact_section",
   "companies",
-  "currency_and_price_list",
-  "default_currency",
-  "column_break_14",
-  "default_price_list",
   "address_contacts",
   "address_html",
-  "website",
   "column_break1",
   "contact_html",
   "primary_address_and_contact_detail",
@@ -52,7 +41,18 @@
   "customer_primary_address",
   "primary_address",
   "default_receivable_accounts",
+  "default_bank_account",
+  "lead_name",
+  "opportunity_name",
+  "default_currency",
+  "territory",
+  "tax_withholding_category",
+  "tax_id",
+  "tax_category",
   "accounts",
+  "currency_and_price_list",
+  "column_break_14",
+  "default_price_list",
   "credit_limit_section",
   "payment_terms",
   "credit_limits",
@@ -71,7 +71,9 @@
   "default_commission_rate",
   "sales_team_section",
   "sales_team",
-  "customer_pos_id"
+  "customer_pos_id",
+  "note_section",
+  "notes"
  ],
  "fields": [
   {
@@ -82,11 +84,12 @@
    "options": "fa fa-user"
   },
   {
+   "default": "new-client-#####",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series",
    "no_copy": 1,
-   "options": "CUST-.YYYY.-",
+   "options": "new-client-#####\nCUST-.YYYY.-",
    "set_only_once": 1
   },
   {
@@ -116,19 +119,19 @@
    "options": "Gender"
   },
   {
-   "default": "Company",
+   "default": "Corporate",
    "fieldname": "customer_type",
    "fieldtype": "Select",
    "label": "Type",
    "oldfieldname": "customer_type",
    "oldfieldtype": "Select",
-   "options": "Company\nIndividual",
+   "options": "Corporate\nRetail",
    "reqd": 1
   },
   {
    "fieldname": "default_bank_account",
    "fieldtype": "Link",
-   "label": "Default Company Bank Account",
+   "label": "Default Bank Account",
    "options": "Bank Account"
   },
   {
@@ -163,13 +166,13 @@
   {
    "fieldname": "customer_group",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Customer Group",
    "oldfieldname": "customer_group",
    "oldfieldtype": "Link",
    "options": "Customer Group",
-   "reqd": 1,
    "search_index": 1
   },
   {
@@ -504,6 +507,15 @@
    "no_copy": 1,
    "options": "Opportunity",
    "print_hide": 1
+  },
+  {
+   "fieldname": "note_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor"
   }
  ],
  "icon": "fa fa-user",
@@ -517,7 +529,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2021-09-06 17:38:54.196663",
+ "modified": "2022-11-09 12:05:43.253310",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

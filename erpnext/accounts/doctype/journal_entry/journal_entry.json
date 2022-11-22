@@ -38,6 +38,7 @@
   "total_amount_in_words",
   "reference",
   "clearance_date",
+  "application_of_payment",
   "remark",
   "paid_loan",
   "inter_company_journal_entry_reference",
@@ -136,6 +137,7 @@
   {
    "fieldname": "finance_book",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Finance Book",
    "options": "Finance Book"
   },
@@ -532,17 +534,22 @@
    "label": "Process Deferred Accounting",
    "options": "Process Deferred Accounting",
    "read_only": 1
+  },
+  {
+   "fieldname": "application_of_payment",
+   "fieldtype": "Link",
+   "label": "Application of Payment",
+   "options": "Application of Payment"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 176,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-06 17:18:46.865259",
+ "modified": "2022-10-12 08:32:42.159769",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",
- "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -586,7 +593,6 @@
  "search_fields": "voucher_type,posting_date, due_date, cheque_no",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
  "title_field": "title",
  "track_changes": 1
 }

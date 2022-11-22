@@ -48,6 +48,7 @@
   "exchange_gain_loss_account",
   "unrealized_exchange_gain_loss_account",
   "unrealized_profit_loss_account",
+  "default_input_vat",
   "column_break0",
   "allow_account_creation_against_child_company",
   "default_payable_account",
@@ -60,6 +61,7 @@
   "default_expense_claim_payable_account",
   "default_discount_account",
   "section_break_22",
+  "default_withholding_tax_code",
   "cost_center",
   "column_break_26",
   "credit_limit",
@@ -101,7 +103,8 @@
   "registration_details",
   "lft",
   "rgt",
-  "old_parent"
+  "old_parent",
+  "section_break_28"
  ],
  "fields": [
   {
@@ -740,6 +743,18 @@
    "label": "Default Provisional Account",
    "no_copy": 1,
    "options": "Account"
+  },
+  {
+   "fieldname": "default_withholding_tax_code",
+   "fieldtype": "Link",
+   "label": "Default Withholding Tax Code",
+   "options": "Tax Withholding Category"
+  },
+  {
+   "fieldname": "default_input_vat",
+   "fieldtype": "Link",
+   "label": "Default Input VAT",
+   "options": "Account"
   }
  ],
  "icon": "fa fa-building",
@@ -747,7 +762,7 @@
  "image_field": "company_logo",
  "is_tree": 1,
  "links": [],
- "modified": "2022-01-25 10:33:16.826067",
+ "modified": "2022-11-21 13:52:47.677950",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Company",
@@ -807,6 +822,5 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "ASC",
- "states": [],
  "track_changes": 1
 }

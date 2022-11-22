@@ -11,6 +11,8 @@
   "payment_term_name",
   "invoice_portion",
   "mode_of_payment",
+  "multiple_terms",
+  "cycle",
   "column_break_3",
   "due_date_based_on",
   "credit_days",
@@ -113,10 +115,23 @@
   {
    "fieldname": "column_break_11",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "multiple_terms",
+   "fieldtype": "Check",
+   "label": "Multiple Terms"
+  },
+  {
+   "fieldname": "cycle",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Cycle",
+   "reqd": 1
   }
  ],
  "links": [],
- "modified": "2022-07-14 12:12:57.576435",
+ "modified": "2022-11-17 13:33:45.990987",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Term",

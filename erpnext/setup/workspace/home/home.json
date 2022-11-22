@@ -173,6 +173,15 @@
    "type": "Link"
   },
   {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Requirements Checklist",
+   "link_to": "Requirements Checklist",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
@@ -250,7 +259,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-04-19 15:48:44.089927",
+ "modified": "2022-10-18 11:38:09.046511",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Home",

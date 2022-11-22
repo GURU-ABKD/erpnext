@@ -10,8 +10,8 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "lead_owner",
   "campaign_name",
+  "lead_owner",
   "company_name",
   "organization_lead",
   "image",
@@ -138,14 +138,14 @@
    "default": "Data Gathering",
    "fieldname": "status",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "Data Gathering\nProgram Design\nCanvassing\nClient Presentation\nClient Confirmation\nOpportunity\nLost Opportunity\nConverted to Account",
-   "reqd": 1,
+   "options": "Data Gathering\nLead\nOpen\nReplied\nOpportunity\nQuotation\nLost Opportunity\nLost Quotation\nInterested\nConverted\nDo Not Contact",
    "search_index": 1
   },
   {
@@ -449,12 +449,12 @@
    "label": "Contact"
   },
   {
-   "default": "Billing",
+   "default": "Billing Address",
    "depends_on": "eval: doc.__islocal",
    "fieldname": "address_type",
    "fieldtype": "Select",
    "label": "Address Type",
-   "options": "Billing\nOffice Address\nHome Address"
+   "options": "Billing Address\nOffice Address\nHome Address"
   },
   {
    "fieldname": "language",
@@ -493,7 +493,7 @@
  "idx": 5,
  "image_field": "image",
  "links": [],
- "modified": "2022-07-17 21:21:11.108874",
+ "modified": "2022-08-03 08:40:14.932622",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Lead",

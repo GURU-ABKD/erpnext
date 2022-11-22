@@ -208,7 +208,7 @@
   }
  ],
  "links": [],
- "modified": "2020-10-23 16:48:06.303658",
+ "modified": "2022-07-21 09:40:17.009429",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Bank Account",
@@ -238,6 +238,11 @@
    "role": "Accounts User",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All",
+   "select": 1
   }
  ],
  "search_fields": "bank,account",

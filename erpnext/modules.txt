@@ -27,3 +27,4 @@ Loan Management
 Payroll
 Telephony
 E-commerce
+Accounting (Non-Trade)

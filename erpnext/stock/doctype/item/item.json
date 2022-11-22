@@ -529,7 +529,6 @@
    "options": "Item Variant Attribute"
   },
   {
-   "depends_on": "eval:!doc.is_fixed_asset",
    "fieldname": "defaults",
    "fieldtype": "Section Break",
    "label": "Sales, Purchase, Accounting Defaults"
@@ -955,7 +954,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-04-28 04:52:10.272256",
+ "modified": "2022-08-31 08:57:21.532931",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
@@ -1016,6 +1015,30 @@
    "role": "All",
    "select": 1,
    "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SAS",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "JAS",
+   "share": 1,
+   "write": 1
   }
  ],
  "quick_entry": 1,
