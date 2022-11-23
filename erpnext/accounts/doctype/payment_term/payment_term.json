@@ -12,7 +12,6 @@
   "invoice_portion",
   "mode_of_payment",
   "multiple_terms",
-  "cycle",
   "column_break_3",
   "due_date_based_on",
   "credit_days",
@@ -121,13 +120,6 @@
    "fieldname": "multiple_terms",
    "fieldtype": "Check",
    "label": "Multiple Terms"
-  },
-  {
-   "fieldname": "cycle",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Cycle",
-   "reqd": 1
   }
  ],
  "links": [],
