@@ -17,27 +17,27 @@ erpnext.LeadController = frappe.ui.form.Controller.extend({
 
 	onload: function () {
 		this.frm.set_query("customer", function (doc, cdt, cdn) {
-			return { query: "erpnext.controllers.queries.customer_query" }
+			return { query: "erpnext.controllers.queries.customer_query" };
 		});
 
 		this.frm.set_query("lead_owner", function (doc, cdt, cdn) {
-			return { query: "frappe.core.doctype.user.user.user_query" }
+			return { query: "frappe.core.doctype.user.user.user_query" };
 		});
 
 		this.frm.set_query("contact_by", function (doc, cdt, cdn) {
-			return { query: "frappe.core.doctype.user.user.user_query" }
+			return { query: "frappe.core.doctype.user.user.user_query" };
 		});
 	},
 
 	refresh: function () {
 		let doc = this.frm.doc;
 		erpnext.toggle_naming_series();
-		frappe.dynamic_link = { doc: doc, fieldname: 'name', doctype: 'Lead' }
+		frappe.dynamic_link = { doc: doc, fieldname: 'name', doctype: 'Lead' };
 
 		// Trinity will not be creating Customer or Quotation in Lead Doctype
 		// if (!this.frm.is_new() && doc.__onload && !doc.__onload.is_customer) {
 		// 	this.frm.add_custom_button(__("Customer"), this.make_customer, __("Create"));
-			// this.frm.add_custom_button(__("Opportunity"), this.make_opportunity, __("Create"));
+		// this.frm.add_custom_button(__("Opportunity"), this.make_opportunity, __("Create"));
 		// 	this.frm.add_custom_button(__("Quotation"), this.make_quotation, __("Create"));
 		// }
 
@@ -52,21 +52,21 @@ erpnext.LeadController = frappe.ui.form.Controller.extend({
 		frappe.model.open_mapped_doc({
 			method: "erpnext.crm.doctype.lead.lead.make_customer",
 			frm: cur_frm
-		})
+		});
 	},
 
 	make_opportunity: function () {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.crm.doctype.lead.lead.make_opportunity",
 			frm: cur_frm
-		})
+		});
 	},
 
 	make_quotation: function () {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.crm.doctype.lead.lead.make_quotation",
 			frm: cur_frm
-		})
+		});
 	},
 
 	organization_lead: function () {
