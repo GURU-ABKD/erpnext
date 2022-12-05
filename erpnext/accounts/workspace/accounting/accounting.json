@@ -168,17 +168,8 @@
    "is_query_report": 0,
    "label": "Accounts Receivable",
    "onboard": 0,
+   "only_for": "",
    "type": "Card Break"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Sales Invoice",
-   "link_to": "Sales Invoice",
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
   },
   {
    "dependencies": "",
@@ -188,6 +179,47 @@
    "link_to": "Customer",
    "link_type": "DocType",
    "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Billing Statement",
+   "link_to": "Billing Statement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Invoice",
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "onboard": 1,
+   "only_for": "",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Collection Receipt",
+   "link_to": "Collection Receipt Transaction Details",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Application of Payment/Adjustment",
+   "link_to": "Application of Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "",
    "type": "Link"
   },
   {
@@ -231,46 +263,6 @@
    "type": "Link"
   },
   {
-   "dependencies": "Sales Invoice",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Sales Register",
-   "link_to": "Sales Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Sales Invoice",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Item-wise Sales Register",
-   "link_to": "Item-wise Sales Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Sales Invoice",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Sales Order Analysis",
-   "link_to": "Sales Order Analysis",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Sales Invoice",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Delivered Items To Be Billed",
-   "link_to": "Delivered Items To Be Billed",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
    "hidden": 0,
    "is_query_report": 0,
    "label": "Accounts Payable",
@@ -281,8 +273,8 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Purchase Invoice",
-   "link_to": "Purchase Invoice",
+   "label": "Supplier",
+   "link_to": "Supplier",
    "link_type": "DocType",
    "onboard": 1,
    "type": "Link"
@@ -291,8 +283,8 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Supplier",
-   "link_to": "Supplier",
+   "label": "Purchase Invoice",
+   "link_to": "Purchase Invoice",
    "link_type": "DocType",
    "onboard": 1,
    "type": "Link"
@@ -315,6 +307,7 @@
    "link_to": "Accounts Payable",
    "link_type": "Report",
    "onboard": 0,
+   "only_for": "",
    "type": "Link"
   },
   {
@@ -1121,8 +1114,8 @@
    "type": "Link"
   }
  ],
- "modified": "2022-09-08 17:27:13.847264",
- "modified_by": "bern@abakadastudios.com",
+ "modified": "2022-12-02 10:40:52.499027",
+ "modified_by": "pearlie@abakadastudios.com",
  "module": "Accounts",
  "name": "Accounting",
  "onboarding": "Accounts",
