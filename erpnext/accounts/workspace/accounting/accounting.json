@@ -365,7 +365,18 @@
    "is_query_report": 0,
    "label": "Reports",
    "onboard": 0,
+   "only_for": "",
    "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Production Book",
+   "link_to": "Production Book v2",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Link"
   },
   {
    "dependencies": "GL Entry",
@@ -425,37 +436,6 @@
    "link_to": "Address And Contacts",
    "link_type": "Report",
    "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "GL Entry",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "DATEV Export",
-   "link_to": "DATEV",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "GL Entry",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "UAE VAT 201",
-   "link_to": "UAE VAT 201",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "GL Entry",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "KSA VAT Report",
-   "link_to": "KSA VAT",
-   "link_type": "Report",
-   "onboard": 0,
-   "only_for": "Saudi Arabia",
    "type": "Link"
   },
   {
@@ -1114,7 +1094,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-12-02 10:40:52.499027",
+ "modified": "2022-12-12 13:38:20.860323",
  "modified_by": "pearlie@abakadastudios.com",
  "module": "Accounts",
  "name": "Accounting",
