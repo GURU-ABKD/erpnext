@@ -13,7 +13,6 @@
   "col_break1",
   "bank_account",
   "party_type",
-  "group_type",
   "party",
   "party_balance",
   "accounting_dimensions_section",
@@ -284,18 +283,12 @@
    "label": "CR No",
    "options": "Collection Receipt Transaction Details",
    "read_only": 1
-  },
-  {
-   "fieldname": "group_type",
-   "fieldtype": "Link",
-   "label": "Group Type",
-   "options": "Insurance Group Type"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-12-08 19:37:36.942989",
+ "modified": "2022-12-12 13:53:25.059745",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry Account",
