@@ -184,8 +184,7 @@
    "oldfieldname": "territory",
    "oldfieldtype": "Link",
    "options": "Territory",
-   "print_hide": 1,
-   "reqd": 1
+   "print_hide": 1
   },
   {
    "fieldname": "tax_id",
@@ -529,7 +528,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-11-28 11:02:58.483108",
+ "modified": "2022-12-12 19:09:31.876541",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
