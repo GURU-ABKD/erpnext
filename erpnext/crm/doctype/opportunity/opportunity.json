@@ -210,9 +210,9 @@
    "options": "Currency"
   },
   {
-   "default": "0.00",
+   "default": "0",
    "fieldname": "opportunity_amount",
-   "fieldtype": "Currency",
+   "fieldtype": "Float",
    "label": "Opportunity Amount",
    "precision": "2",
    "reqd": 1
@@ -434,7 +434,7 @@
  "icon": "fa fa-info-sign",
  "idx": 195,
  "links": [],
- "modified": "2022-12-12 15:29:43.851104",
+ "modified": "2022-12-14 15:23:07.917043",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Opportunity",
