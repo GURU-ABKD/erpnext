@@ -249,7 +249,7 @@
   {
    "fieldname": "customer_address",
    "fieldtype": "Link",
-   "label": "Customer Address",
+   "label": "Client Address",
    "options": "Address",
    "print_hide": 1
   },
@@ -965,7 +965,7 @@
  "idx": 82,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-09-30 16:34:05.887670",
+ "modified": "2022-12-19 16:50:06.763156",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation",
