@@ -41,6 +41,18 @@
   {
    "chart": "Lead Source",
    "width": "Half"
+  },
+  {
+   "chart": "Chart ABC",
+   "width": "Half"
+  },
+  {
+   "chart": "Chart ABC-NCD",
+   "width": "Half"
+  },
+  {
+   "chart": "Chart - REPORT",
+   "width": "Half"
   }
  ],
  "creation": "2020-07-20 20:17:15.985657",
@@ -50,8 +62,8 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2020-07-21 18:56:47.230053",
- "modified_by": "Administrator",
+ "modified": "2022-12-21 14:08:48.415500",
+ "modified_by": "gie@abakadastudios.com",
  "module": "CRM",
  "name": "CRM",
  "owner": "Administrator"
