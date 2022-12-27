@@ -190,10 +190,19 @@
    "link_type": "DocType",
    "onboard": 1,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ and PO Approvers",
+   "link_to": "Approvers",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-05-26 09:50:49.333621",
- "modified_by": "Administrator",
+ "modified": "2022-12-27 10:55:28.603014",
+ "modified_by": "randulf@abakadastudios.com",
  "module": "CRM",
  "name": "CRM",
  "onboarding": "",
