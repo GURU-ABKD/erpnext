@@ -89,10 +89,34 @@ frappe.ui.form.on("Opportunity", {
 						frm.trigger("make_supplier_quotation")
 					}, __('Create'));
 
-				frm.add_custom_button(__('Request For Quotation'),
+				if(frm.doc.insurance_type == "Marine Cargo" && (frm.doc.insurance_sub_group == "MOP (Declaration Based)" || frm.doc.insurance_sub_group == "Cargo")) {
+					var prim_count = 0
+					$.each(frm.doc.marine_cargo_requirements || [], function(i, v) {
+						if(v.requirements == "Bill of Lading or Invoice") {
+							if (v.upload_file) {
+								prim_count += 1
+							}
+						}
+						if (v.requirements == "Marine Declaration") {
+							if (v.upload_file) {
+								prim_count +=1
+							}
+						}
+					})
+					console.log(prim_count)
+					if (prim_count == 2) {
+						frm.add_custom_button(__('Request For Quotation'),
+							function() {
+								frm.trigger("make_request_for_quotation")
+							}, __('Create'));
+						}
+				} else {
+					frm.add_custom_button(__('Request For Quotation'),
 					function() {
 						frm.trigger("make_request_for_quotation")
 					}, __('Create'));
+				}
+				
 			}
 
 			if (frm.doc.opportunity_from != "Customer") {
