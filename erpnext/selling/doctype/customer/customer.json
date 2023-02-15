@@ -71,9 +71,7 @@
   "default_commission_rate",
   "sales_team_section",
   "sales_team",
-  "customer_pos_id",
-  "note_section",
-  "notes"
+  "customer_pos_id"
  ],
  "fields": [
   {
@@ -506,15 +504,6 @@
    "no_copy": 1,
    "options": "Opportunity",
    "print_hide": 1
-  },
-  {
-   "fieldname": "note_section",
-   "fieldtype": "Section Break",
-   "label": "Notes"
-  },
-  {
-   "fieldname": "notes",
-   "fieldtype": "Text Editor"
   }
  ],
  "icon": "fa fa-user",
@@ -528,7 +517,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-12-12 19:09:31.876541",
+ "modified": "2023-02-15 19:30:51.880369",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
