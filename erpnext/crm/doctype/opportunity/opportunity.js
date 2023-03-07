@@ -55,7 +55,7 @@ frappe.ui.form.on("Opportunity", {
 
 	status:function(frm){
 		if (frm.doc.status == "Lost"){
-			frm.trigger('set_as_lost_dialog');
+			// frm.trigger('set_as_lost_dialog');
 		}
 
 	},
